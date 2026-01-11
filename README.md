@@ -1,4 +1,4 @@
-.exe Dosyasını bu linkten indirebilirsiniz.  "https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=drive_link"
+.exe Dosyasını bu linkten indirebilirsiniz.  "[https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=drive_link](https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=sharing)"
 
 📂 TOPLU MAIL VE BELGE GÖNDERİCİ - KULLANIM KILAVUZU
 Bu program, Excel listesindeki kişilere özel olarak Word şablonlarını düzenler, PDF'e çevirir ve Outlook üzerinden (imzanızla birlikte) otomatik olarak mail atar.
@@ -72,7 +72,7 @@ Soru: Antivirüs programı uyarı veriyor.
 Cevap: Program özel olarak şirket içi kullanım için yazıldığından dijital imzası yoktur. Antivirüs uyarısına "Yine de çalıştır" veya "Güvenli" diyerek devam edebilirsiniz.
 
 ********************************************************************************************************************************************************************************************************
-You can download the .exe file from this link. "https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=drive_link"
+You can download the .exe file from this link. "[https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=drive_link](https://drive.google.com/file/d/1gT4XCv5hivn9k8SS4ccmzJzM-aQoC0ca/view?usp=sharing)"
 
 📂 BULK EMAIL & DOCUMENT SENDER – USER GUIDE
 
