@@ -1,20 +1,39 @@
+import sys
+import os
+
+# --- KRİTİK DÜZELTME: SUSTURUCU SINIF (EN BAŞA EKLENMELİ) ---
+# Bu kod, .exe olduğunda arka plandaki kütüphanelerin ekrana yazı yazıp
+# programı çökertmesini engeller.
+class NullWriter:
+    def write(self, text):
+        pass
+    def flush(self):
+        pass
+
+# Program başladığı an, eğer yazılacak bir ekran yoksa (exe modu),
+# çıktıları bu sahte yazıcıya yönlendiriyoruz.
+if sys.stdout is None:
+    sys.stdout = NullWriter()
+if sys.stderr is None:
+    sys.stderr = NullWriter()
+# -----------------------------------------------------------
+
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext
 import pandas as pd
 from docx import Document
 from docx2pdf import convert
 import win32com.client as win32
-import os
 import pythoncom
-import ttkbootstrap as ttk # Modern arayüz kütüphanesi
-from ttkbootstrap.constants import * 
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+
 class MailGondericiUygulamasi:
     def __init__(self, root):
         self.root = root
         self.root.title("Toplu Mail Asistanı")
         self.root.geometry("700x800")
         
-        # Pencere ikonu (varsa)
         try:
             self.root.iconbitmap("logo.ico") 
         except:
@@ -34,13 +53,11 @@ class MailGondericiUygulamasi:
         main_frame.pack(fill=BOTH, expand=YES)
 
         # Başlık
-        lbl_baslik = ttk.Label(main_frame, text="Mail Asistanı", font=("Helvetica", 18, "bold"))
+        lbl_baslik = ttk.Label(main_frame, text="Mail Asistan", font=("Helvetica", 18, "bold"))
         lbl_baslik.pack(pady=(0, 20))
 
         # --- 1. DOSYA SEÇİMLERİ ---
-        # HATA DÜZELTİLDİ: padding parantez içinden silindi.
         file_frame = ttk.LabelFrame(main_frame, text=" Dosya Seçimleri ")
-        # Padding buraya (pack içine) taşındı: ipadx ve ipady iç boşluk sağlar
         file_frame.pack(fill=X, pady=5, ipadx=10, ipady=10)
 
         # Word
@@ -58,13 +75,11 @@ class MailGondericiUygulamasi:
         ttk.Button(frm_excel, text="Seç", command=self.excel_sec, style="secondary.Outline.TButton").pack(side=RIGHT)
 
         # --- 2. MAIL AYARLARI ---
-        # HATA DÜZELTİLDİ: padding parantez içinden silindi.
         mail_frame = ttk.LabelFrame(main_frame, text=" Mail Detayları ")
-        # Padding pack içine eklendi
         mail_frame.pack(fill=BOTH, expand=YES, pady=15, ipadx=10, ipady=10)
 
         # Dosya Eki İsmi
-        ttk.Label(mail_frame, text="PDF Dosya Ek Adı (Opsiyonel):").pack(anchor=W, padx=5)
+        ttk.Label(mail_frame, text="PDF Dosya Eki (Opsiyonel):").pack(anchor=W, padx=5)
         ttk.Entry(mail_frame, textvariable=self.dosya_eki).pack(fill=X, pady=(0, 5), padx=5)
         ttk.Label(mail_frame, text="* Boş bırakırsanız sadece isim kullanılır.", font=("Helvetica", 8)).pack(anchor=W, pady=(0, 10), padx=5)
 
@@ -161,6 +176,12 @@ class MailGondericiUygulamasi:
                 temp_pdf = os.path.abspath(pdf_adi)
 
                 doc.save(temp_docx)
+                
+                # DOCX2PDF ÇÖKMESİNİ ENGELLEMEK İÇİN EKSTRA GÜVENLİK
+                # Eğer yukarıdaki global ayar yetmezse diye işlemi yapmadan hemen önce tekrar kontrol
+                if sys.stdout is None: sys.stdout = NullWriter()
+                if sys.stderr is None: sys.stderr = NullWriter()
+                
                 convert(temp_docx, temp_pdf)
 
                 # Mail İşlemleri
@@ -200,6 +221,6 @@ class MailGondericiUygulamasi:
 
 if __name__ == "__main__":
     # TEMA AYARI
-    app = ttk.Window(themename="solar") 
+    app = ttk.Window(themename="superhero") 
     MailGondericiUygulamasi(app)
     app.mainloop()
