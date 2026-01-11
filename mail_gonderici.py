@@ -1,7 +1,7 @@
 import sys
 import os
 
-# --- KRİTİK DÜZELTME: SUSTURUCU SINIF (EN BAŞA EKLENMELİ) ---
+
 # Bu kod, .exe olduğunda arka plandaki kütüphanelerin ekrana yazı yazıp
 # programı çökertmesini engeller.
 class NullWriter:
@@ -224,3 +224,4 @@ if __name__ == "__main__":
     app = ttk.Window(themename="superhero") 
     MailGondericiUygulamasi(app)
     app.mainloop()
+
